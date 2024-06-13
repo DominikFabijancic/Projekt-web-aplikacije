@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>L`Express</title>
+        <link rel="stylesheet" type="text/css" href="css/index.css">
+        <script type="text/javascript" src="jquery-1.11.0.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
+        <script src="js/form-validation.js"></script>
+    </head>
+    <body>
+        <header>
+            <div class="logo">
+                <img src="slike/logo.png" class="logo-img">
+            </div>
+            <nav>
+                <div class="seperator">
+                    <ol class="nav-list">
+                        <li><a href="#">HOME</a></li>
+                        <li><a href="#">MONDE</a></li>
+                        <li><a href="#">ECONOMIE</a></li>
+                    </ol>
+                    <ol class="nav-list" id="create">
+                    </ol>
+                </div>
+            </nav>
+        </header>
+
+
+        <main>
+            <div class="main-div">
+                <form name="register" id="form_register" method="POST" action="register_handle.php" class="newForm">
+                    <label for="#username">Username</label><br>
+                    <input type="text" name="username" id="username"><br>
+                    <label for="#password">Password</label><br>
+                    <input type="password" name="password" id="password"><br>
+                    <label for="#repeat">Ponovi password</label><br>
+                    <input type="password" name="repeat" id="repeat"><br>
+                    <input type="button" value="Idi nazad" class="buttonForm" onclick="goBack()">
+                    <input type="submit" value="Submit" class="buttonForm">
+                </form>
+                <script>
+                    $(function() {
+                        $("form[name='register']").validate({
+                            rules: {
+                                username: {
+                                    required: true
+                                },
+                                password: {
+                                    required: true
+                                },
+                                repeat: {
+                                    required: true,
+                                    equalTo: "#password"
+                                }
+                            },
+            
+                            messages: {
+                                username: {
+                                    required: "Username nesmije biti prazan.",
+                                },
+                                password: {
+                                    required: "Password nesmije biti prazan.",
+                                },
+                                repeat: {
+                                    required: "Ponovljeni password nesmije biti prazan.",
+                                    equalTo: "Ponovljeni password mora biti isti kao uneseni password."
+                                },
+            
+                                submitHandler: function(form) {
+                                    form.submit();
+                                }
+                            }
+                        })
+                    });
+
+                    function goBack(){
+                        window.location.href = 'login.html';
+                    }
+                </script>
+            </div>
+        </main>
+            
+
+        <footer>
+            <div class="center-footer">
+                <p>Les sites du reseau Groupe L`Express : Food avec Mycuisine.fr</p>
+                <br>
+                <p>© L'Express </p>
+            </div>
+        </footer>
+    </body>
+</html>
